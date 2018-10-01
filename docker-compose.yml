@@ -1,0 +1,16 @@
+version: '2'
+services:
+  qemu_dos:
+    image: jgoerzen/qemu-dos:latest
+    build .
+    restart: always
+    privileged: true
+    ports:
+    - 5901:5901
+    - 5902:5902
+    environment:
+    - VNCPASSWORD=123
+    cap_add:
+    - SYS_PTRACE
+    security_opt:
+    - seccomp:unconfined
